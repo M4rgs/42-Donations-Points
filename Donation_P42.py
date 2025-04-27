@@ -1,10 +1,16 @@
-### BY TAHA ###
 import requests
 from concurrent.futures import ThreadPoolExecutor
+import sys
 
-much = 7
+if len(sys.argv) != 4:
+    print("Usage: python3 Donation_P42.py <END_POINT> <HOW_MANY_POINTS> <SESSION_ID>")
+    sys.exit(1)
 
-url = "YOUR_END_POINT"
+END_POINT = sys.argv[1]
+much = int(sys.argv[2])
+SESSION_ID = sys.argv[3]
+
+url = END_POINT
 
 data = {
     'correction_point': '1',
@@ -17,7 +23,7 @@ headers = {
 }
 
 cookies = {
-    "_intra_42_session_production": "YOUR_SESSION_ID",
+    "_intra_42_session_production": SESSION_ID,
 }
 
 def send_post():
